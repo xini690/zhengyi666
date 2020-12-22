@@ -1,0 +1,41 @@
+#include<stdio.h>
+#define N 10
+int main()
+{
+	struct s
+	{
+		int num;
+		char name[20];
+		float score[3];
+		float aver;
+	}stu[N];
+	int a,b,c,d,e,f;
+	for(a=0;a<N;a++)
+	{
+		printf("请输入第%d学生信息:\n",a+1);
+		scanf("%d %s %f %f %f",&stu[a].num,
+		stu[a].name,&stu[a].score[0],&stu[a].score[1],&stu[a].score[2]);
+		for(d=0,b=0;b<3;b++)
+		{
+			d=stu[a].score[b]+d;
+			if(b==2)
+			{
+				stu[a].aver=d/3.0; 
+				printf("平均成绩为%.2f\n",stu[a].aver);	 
+			}
+		}
+		printf("\n"); 
+	}
+	int m,n=0;
+	for(m=0;m<N;m++)
+	{
+		if(stu[m].aver>stu[n].aver)
+		{
+			n=m;
+		}
+	}
+	printf("成绩最高的学生：\n");
+	printf("学号: %d\n姓名: %s\n三科成绩：%.2f %.2f %.2f\n平均分: %.2f\n",
+	stu[n].num,stu[n].name,stu[n].score[0],stu[n].score[1],stu[n].score[2],stu[n].aver);
+	return 0;
+}
